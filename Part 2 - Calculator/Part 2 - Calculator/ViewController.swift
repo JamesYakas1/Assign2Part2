@@ -13,9 +13,28 @@ class ViewController: UIViewController {
     //References
     @IBOutlet weak var displayResult: UILabel!
     
+    //Varaible for a given number that was pressed
+    //var tempValue: String = ""
+    //Variable for holding the calculation
+    //var sum: Int = 0
+    
+    //array for holding the calculations
+    var theCals = [String]()
+    //array for holding the total/sub-total
+    var theTotals = [String]()
+    
+    //int for holding a number
+    var cl:String = "0"
+    
+    //has AC been pressed?
+    var acPressed:Bool = true
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        //displayResult.text = String(sum)
+        theTotals += ["0"]
     }
 
 
@@ -24,10 +43,24 @@ class ViewController: UIViewController {
     @IBAction func selectDot(_ sender: Any) {
     }
     @IBAction func select0(_ sender: Any) {
+        
     }
     @IBAction func select1(_ sender: Any) {
+        //tempValue += "1";
+        //displayResult.text = tempValue
+        if(acPressed == true){
+            acPressed = false
+            cl = "1"
+            displayResult.text = cl
+        }else{
+            cl += "1"
+            displayResult.text = cl
+        }
+        
     }
     @IBAction func select2(_ sender: Any) {
+        //tempValue += "2";
+        //displayResult.text = tempValue
     }
     @IBAction func select3(_ sender: Any) {
     }
@@ -48,9 +81,38 @@ class ViewController: UIViewController {
     //Divide, multiply, minus and plus
     
     @IBAction func selectPlus(_ sender: Any) {
+        if(theCals.contains("+")){
+            var intCl = Int(cl)
+            var intTheCals = Int(theCals[0])
+            var intTheTotal = Int(theTotals[0])
+            print(intCl!,intTheCals!, intTheTotal!)
+            var result:Int = intCl! + intTheCals! + intTheTotal!
+            var stringResult:String = String(result)
+            displayResult.text = stringResult
+            
+            theCals.removeAll()
+            cl = ""
+            //theCals.append(stringResult) //send to total array instead
+            theTotals.removeAll()
+            theTotals.append(stringResult)
+            
+        }else{
+            theCals.append(cl)
+            theCals.append("+")
+            print(theCals[0], theCals[1])
+            cl = ""
+            var intTheTotal = Int(theTotals[0])
+            var intTheCals = Int(theCals[0])
+            var result:Int = intTheTotal! + intTheCals!
+
+            var stringResult:String = String(result)
+            displayResult.text = stringResult
+            
+        }
     }
     
     @IBAction func selectMinus(_ sender: Any) {
+
     }
     
     @IBAction func selectMultiply(_ sender: Any) {
@@ -61,7 +123,7 @@ class ViewController: UIViewController {
     
     //Equals
     @IBAction func selectEquals(_ sender: Any) {
-        displayResult.text = "Equals tapped"
+        //displayResult.text = tempValue
     }
     
     //Clear Entry
@@ -70,7 +132,13 @@ class ViewController: UIViewController {
     
     //All clear
     @IBAction func selectAC(_ sender: Any) {
-        displayResult.text = "";
+        //tempValue = ""
+        //displayResult.text = "";
+        acPressed = true;
+        cl = "0"
+        displayResult.text = cl
+    
+        
     }
     
     
