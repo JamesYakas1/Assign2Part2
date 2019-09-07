@@ -13,20 +13,18 @@ class ViewController: UIViewController {
     //References
     @IBOutlet weak var displayResult: UILabel!
     
-    //Varaible for a given number that was pressed
-    //var tempValue: String = ""
-    //Variable for holding the calculation
-    //var sum: Int = 0
-    
-    //array for holding the calculations
+    //array for holding the calculations.A calculation is a number and an operation (+,-,*,/). This scenario occurs when the user has entered a number and pressed an operation, sending, "1456" and "+" to the array, for example.
     var theCals = [String]()
-    //array for holding the total/sub-total
+    
+    //array for holding the total/sub-totalA total/sub-toal is defined as the addition of two numbers for example, such as the addition "123" + "20". "143" would be sent to theTotals array. This keeps track of previous calculations.
     var theTotals = [String]()
     
-    //int for holding a number
+    //A string, "Calculation line", for holding user number inputs, such as "111".
     var cl:String = "0"
     
-    //has AC been pressed?
+    //var tempCl:String = "0"
+    
+    //has AC been pressed? A bool for identifying if AC has been recently pressed for proceeding logic
     var acPressed:Bool = true
     
     
@@ -34,7 +32,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         //displayResult.text = String(sum)
-        theTotals += ["0"]
+        theTotals += ["0"] //Set the total as 0, since no calculations have occured.
     }
 
 
@@ -46,8 +44,7 @@ class ViewController: UIViewController {
         
     }
     @IBAction func select1(_ sender: Any) {
-        //tempValue += "1";
-        //displayResult.text = tempValue
+
         if(acPressed == true){
             acPressed = false
             cl = "1"
@@ -59,8 +56,6 @@ class ViewController: UIViewController {
         
     }
     @IBAction func select2(_ sender: Any) {
-        //tempValue += "2";
-        //displayResult.text = tempValue
     }
     @IBAction func select3(_ sender: Any) {
     }
@@ -81,33 +76,37 @@ class ViewController: UIViewController {
     //Divide, multiply, minus and plus
     
     @IBAction func selectPlus(_ sender: Any) {
-        if(theCals.contains("+")){
-            var intCl = Int(cl)
-            var intTheCals = Int(theCals[0])
-            var intTheTotal = Int(theTotals[0])
-            print(intCl!,intTheCals!, intTheTotal!)
-            var result:Int = intCl! + intTheCals! + intTheTotal!
-            var stringResult:String = String(result)
+        if(theCals.contains("+")){ //If theCals already contains a number and a +
+            let intCl = Int(cl) ?? 0 //Set to 0 if user presses the + button twice.
+            let intTheCals = Int(theCals[0]) ?? 0 //Set to 0 if user presses the + button twice.
+            let intTheTotal = Int(theTotals[0])
+            print(intCl,intTheCals, intTheTotal!)
+            let result:Int = intCl + intTheCals + intTheTotal! //Sum the current input, the cals, and previous total.
+            let stringResult:String = String(result)
             displayResult.text = stringResult
             
+            //Reset theCals array, the current cl and add the current total to the total array for further usage.
             theCals.removeAll()
             cl = ""
             //theCals.append(stringResult) //send to total array instead
             theTotals.removeAll()
             theTotals.append(stringResult)
             
-        }else{
+        }else{ //If theCals is blank
+            //Add the cl and operation sign to the calcuations array then reset the cl.
+            print("CL value:\(cl)")
             theCals.append(cl)
             theCals.append("+")
-            print(theCals[0], theCals[1])
+            print("theCals[0]:\(theCals[0]), theCals[1]:\(theCals[1])")
             cl = ""
-            var intTheTotal = Int(theTotals[0])
-            var intTheCals = Int(theCals[0])
-            var result:Int = intTheTotal! + intTheCals!
-
-            var stringResult:String = String(result)
-            displayResult.text = stringResult
             
+            
+            let intTheTotal = Int(theTotals[0])
+            let intTheCals = Int(theCals[0]) ?? 0 //Set to 0 if user presses the + button twice.
+            let result:Int = intTheTotal! + intTheCals //Sum the total and theCals
+            
+            let stringResult:String = String(result)
+            displayResult.text = stringResult
         }
     }
     
@@ -132,13 +131,16 @@ class ViewController: UIViewController {
     
     //All clear
     @IBAction func selectAC(_ sender: Any) {
-        //tempValue = ""
-        //displayResult.text = "";
         acPressed = true;
-        cl = "0"
-        displayResult.text = cl
-    
         
+        //Reset the cl, theCals and theTotals.
+        cl = "0"
+        theCals.removeAll()
+        theTotals.removeAll()
+        theTotals += ["0"]
+        
+        //Display the cl("0")
+        displayResult.text = cl
     }
     
     
