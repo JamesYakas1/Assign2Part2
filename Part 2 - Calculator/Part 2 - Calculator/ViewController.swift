@@ -41,7 +41,14 @@ class ViewController: UIViewController {
     @IBAction func selectDot(_ sender: Any) {
     }
     @IBAction func select0(_ sender: Any) {
-        
+        if(acPressed == true){
+            acPressed = false
+            cl = "0"
+            displayResult.text = cl
+        }else{
+            cl += "0"
+            displayResult.text = cl
+        }
     }
     @IBAction func select1(_ sender: Any) {
 
@@ -53,24 +60,86 @@ class ViewController: UIViewController {
             cl += "1"
             displayResult.text = cl
         }
-        
     }
     @IBAction func select2(_ sender: Any) {
+        if(acPressed == true){
+            acPressed = false
+            cl = "2"
+            displayResult.text = cl
+        }else{
+            cl += "2"
+            displayResult.text = cl
+        }
     }
     @IBAction func select3(_ sender: Any) {
+        if(acPressed == true){
+            acPressed = false
+            cl = "3"
+            displayResult.text = cl
+        }else{
+            cl += "3"
+            displayResult.text = cl
+        }
     }
     @IBAction func select4(_ sender: Any) {
+        if(acPressed == true){
+            acPressed = false
+            cl = "4"
+            displayResult.text = cl
+        }else{
+            cl += "4"
+            displayResult.text = cl
+        }
     }
     @IBAction func select5(_ sender: Any) {
+        if(acPressed == true){
+            acPressed = false
+            cl = "5"
+            displayResult.text = cl
+        }else{
+            cl += "5"
+            displayResult.text = cl
+        }
     }
     @IBAction func select6(_ sender: Any) {
+        if(acPressed == true){
+            acPressed = false
+            cl = "6"
+            displayResult.text = cl
+        }else{
+            cl += "6"
+            displayResult.text = cl
+        }
     }
     @IBAction func select7(_ sender: Any) {
+        if(acPressed == true){
+            acPressed = false
+            cl = "7"
+            displayResult.text = cl
+        }else{
+            cl += "7"
+            displayResult.text = cl
+        }
     }
-    
     @IBAction func select8(_ sender: Any) {
+        if(acPressed == true){
+            acPressed = false
+            cl = "8"
+            displayResult.text = cl
+        }else{
+            cl += "8"
+            displayResult.text = cl
+        }
     }
     @IBAction func select9(_ sender: Any) {
+        if(acPressed == true){
+            acPressed = false
+            cl = "9"
+            displayResult.text = cl
+        }else{
+            cl += "9"
+            displayResult.text = cl
+        }
     }
     
     //Divide, multiply, minus and plus
