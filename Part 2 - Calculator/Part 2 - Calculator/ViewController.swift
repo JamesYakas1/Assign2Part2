@@ -36,14 +36,24 @@ class ViewController: UIViewController {
     }
     
     //New references
-    var currentNumber:Double = 0;
+    var currentNumber:Double = 0
+    var lastNumber:Double = 0
+    var executingCal = false //See if user is performing a calculation
+    var operationTag = 0 //Store what operation is going to be performed when user clicks on = in the form of a tag number
 
     //Numbers
     @IBAction func selectNumbers(_ sender: UIButton) {
         
-        //Display = the button pressed
-        displayResult.text = displayResult.text! + String(sender.tag-1)
-        currentNumber = Double(displayResult.text!)! //store the display as currentNumber
+        if (executingCal == true){ //About to perform a calculation as a sign was just pressed
+            displayResult.text = String(sender.tag-1) //Set the display to the next set of numbers for calculation
+            currentNumber = Double(displayResult.text!)! //Store the current numbers
+            executingCal = false
+        }
+        else{
+            //Display = the button pressed
+            displayResult.text = displayResult.text! + String(sender.tag-1)
+            currentNumber = Double(displayResult.text!)! //store the display as currentNumber
+        }
     }
     
     //Other buttons - AC, +/-, %, /, x, -, +, =
@@ -52,6 +62,11 @@ class ViewController: UIViewController {
         
         //If results does not equal "" or AC or =
         if (displayResult.text != "" && sender.tag != 11 && sender.tag != 16){
+            
+            //Store the current number
+            lastNumber = Double(displayResult.text!)!
+            
+            //Set the display to a sign
             if sender.tag == 12{ //Divide
                 displayResult.text = "/"
             }else if sender.tag == 13{ //Multiply
@@ -61,6 +76,31 @@ class ViewController: UIViewController {
             }else if sender.tag == 15{ //Addition
                 displayResult.text = "+"
             }
+            
+            operationTag = sender.tag //Store the operation (+,-,*,/) in the form of a tag number
+            //We are now about to performCalculations as we just pressed a sign
+            executingCal = true
+        }
+        else if (sender.tag == 16){ //If button pressed is =
+            
+            if operationTag == 12{ //Divide
+                displayResult.text = String(lastNumber / currentNumber)
+            }
+            else if operationTag == 13{ //Multiply
+                displayResult.text = String(lastNumber * currentNumber)
+            }
+            else if operationTag == 14{ //Subtract
+                displayResult.text = String(lastNumber - currentNumber)
+            }
+            else if operationTag == 15{ //Addition
+                displayResult.text = String(lastNumber + currentNumber)
+            }
+        }
+        else if (sender.tag == 11){ //If button pressed is AC
+            displayResult.text = ""
+            lastNumber = 0
+            currentNumber = 0
+            operationTag = 0
         }
     }
     
