@@ -34,11 +34,34 @@ class ViewController: UIViewController {
         //displayResult.text = String(sum)
         theTotals += ["0"] //Set the total as 0, since no calculations have occured.
     }
+    
+    //New references
+    var currentNumber:Double = 0;
 
     //Numbers
     @IBAction func selectNumbers(_ sender: UIButton) {
         
+        //Display = the button pressed
         displayResult.text = displayResult.text! + String(sender.tag-1)
+        currentNumber = Double(displayResult.text!)! //store the display as currentNumber
+    }
+    
+    //Other buttons - AC, +/-, %, /, x, -, +, =
+    
+    @IBAction func buttons(_ sender: UIButton) {
+        
+        //If results does not equal "" or AC or =
+        if (displayResult.text != "" && sender.tag != 11 && sender.tag != 16){
+            if sender.tag == 12{ //Divide
+                displayResult.text = "/"
+            }else if sender.tag == 13{ //Multiply
+                displayResult.text = "*"
+            }else if sender.tag == 14{ //Subtract
+                displayResult.text = "-"
+            }else if sender.tag == 15{ //Addition
+                displayResult.text = "+"
+            }
+        }
     }
     
     
