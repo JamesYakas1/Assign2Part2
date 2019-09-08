@@ -35,10 +35,24 @@ class ViewController: UIViewController {
         theTotals += ["0"] //Set the total as 0, since no calculations have occured.
     }
 
-
+    //Numbers
+    @IBAction func selectNumbers(_ sender: UIButton) {
+        
+        displayResult.text = displayResult.text! + String(sender.tag-1)
+    }
+    
+    
     
     //Numerical characters
     @IBAction func selectDot(_ sender: Any) {
+        if(acPressed == true){
+            acPressed = false
+            cl = "."
+            displayResult.text = cl
+        }else{
+            cl += "."
+            displayResult.text = cl
+        }
     }
     @IBAction func select0(_ sender: Any) {
         if(acPressed == true){
@@ -145,21 +159,27 @@ class ViewController: UIViewController {
     //Divide, multiply, minus and plus
     
     @IBAction func selectPlus(_ sender: Any) {
-        if(theCals.contains("+")){ //If theCals already contains a number and a +
-            let intCl = Int(cl) ?? 0 //Set to 0 if user presses the + button twice.
-            let intTheCals = Int(theCals[0]) ?? 0 //Set to 0 if user presses the + button twice.
-            let intTheTotal = Int(theTotals[0])
-            print(intCl,intTheCals, intTheTotal!)
-            let result:Int = intCl + intTheCals + intTheTotal! //Sum the current input, the cals, and previous total.
-            let stringResult:String = String(result)
-            displayResult.text = stringResult
-            
-            //Reset theCals array, the current cl and add the current total to the total array for further usage.
-            theCals.removeAll()
-            cl = ""
-            //theCals.append(stringResult) //send to total array instead
-            theTotals.removeAll()
-            theTotals.append(stringResult)
+        if(theCals.contains("+") || theCals.contains("-")  || theCals.contains("*")
+            || theCals.contains("/")){ //If theCals already contains a number and a +
+                if(theCals.contains("+")) {
+                    
+                
+                let intCl = Double(cl) ?? 0 //Set to 0 if user presses the + button twice.
+                let intTheCals = Double(theCals[0]) ?? 0 //Set to 0 if user presses the + button twice.
+                let intTheTotal = Double(theTotals[0])
+                print("cl:\(intCl), theCals:\(intTheCals), theTotal:\(intTheTotal!)")
+                let result:Double = (intTheCals + intTheTotal!) + intCl //intCl + intTheCals + intTheTotal! //Sum the current input, the cals, and previous total.
+                let stringResult:String = String(result)
+                displayResult.text = stringResult
+                
+                //Reset theCals array, the current cl and add the current total to the total array for further usage.
+                theCals.removeAll()
+                cl = ""
+                //theCals.append(stringResult) //send to total array instead
+                theTotals.removeAll()
+                theTotals.append(stringResult)
+                print("cl:\(cl), theCals:EmptyArray, theTotal:\(theTotals[0])")
+                }
             
         }else{ //If theCals is blank
             //Add the cl and operation sign to the calcuations array then reset the cl.
@@ -170,9 +190,9 @@ class ViewController: UIViewController {
             cl = ""
             
             
-            let intTheTotal = Int(theTotals[0])
-            let intTheCals = Int(theCals[0]) ?? 0 //Set to 0 if user presses the + button twice.
-            let result:Int = intTheTotal! + intTheCals //Sum the total and theCals
+            let intTheTotal = Double(theTotals[0])
+            let intTheCals = Double(theCals[0]) ?? 0 //Set to 0 if user presses the + button twice.
+            let result:Double = intTheTotal! + intTheCals //Sum the total and theCals
             
             let stringResult:String = String(result)
             displayResult.text = stringResult
@@ -184,6 +204,61 @@ class ViewController: UIViewController {
     }
     
     @IBAction func selectMultiply(_ sender: Any) {
+        if(theCals.contains("+") || theCals.contains("-")  || theCals.contains("*")
+            || theCals.contains("/")){ //If theCals already contains a number and a +
+            if(theCals.contains("+")) {
+                
+                let intCl = Double(cl) ?? 0 //Set to 0 if user presses the + button twice.
+                let intTheCals = Double(theCals[0]) ?? 0 //Set to 0 if user presses the + button twice.
+                let intTheTotal = Double(theTotals[0])
+                print("cl:\(intCl), theCals:\(intTheCals), theTotal:\(intTheTotal!)")
+                let result:Double = (intTheCals + intTheTotal!) + intCl //intCl + intTheCals + intTheTotal! //Sum the current input, the cals, and previous total.
+                let stringResult:String = String(result)
+                displayResult.text = stringResult
+                
+                //Reset theCals array, the current cl and add the current total to the total array for further usage.
+                theCals.removeAll()
+                cl = ""
+                //theCals.append(stringResult) //send to total array instead
+                theTotals.removeAll()
+                theTotals.append(stringResult)
+                print("cl:\(cl), theCals:EmptyArray, theTotal:\(theTotals[0])")
+            }
+            if(theCals.contains("*")) {
+                
+                let intCl = Double(cl) ?? 0 //Set to 0 if user presses the + button twice.
+                let intTheCals = Double(theCals[0]) ?? 0 //Set to 0 if user presses the + button twice.
+                let intTheTotal = Double(theTotals[0])
+                print("cl:\(intCl), theCals:\(intTheCals), theTotal:\(intTheTotal!)")
+                let result:Double = (intTheCals + intTheTotal!) * intCl //intCl + intTheCals + intTheTotal! //Sum the current input, the cals, and previous total.
+                let stringResult:String = String(result)
+                displayResult.text = stringResult
+                
+                //Reset theCals array, the current cl and add the current total to the total array for further usage.
+                theCals.removeAll()
+                cl = ""
+                //theCals.append(stringResult) //send to total array instead
+                theTotals.removeAll()
+                theTotals.append(stringResult)
+                print("cl:\(cl), theCals:EmptyArray, theTotal:\(theTotals[0])")
+            }
+            
+        }else{ //If theCals is blank
+            //Add the cl and operation sign to the calcuations array then reset the cl.
+            print("CL value:\(cl)")
+            theCals.append(cl)
+            theCals.append("*")
+            print("theCals[0]:\(theCals[0]), theCals[1]:\(theCals[1])")
+            cl = ""
+            
+            
+            let intTheTotal = Double(theTotals[0])
+            let intTheCals = Double(theCals[0]) ?? 0 //Set to 0 if user presses the + button twice.
+            let result:Double = intTheTotal! + intTheCals //Sum the total and theCals
+            
+            let stringResult:String = String(result)
+            displayResult.text = stringResult
+        }
     }
     
     @IBAction func selectdDivide(_ sender: Any) {
