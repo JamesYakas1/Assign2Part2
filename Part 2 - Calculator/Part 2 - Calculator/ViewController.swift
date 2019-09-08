@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    //References
+    //References - OLD REFERENCES
     @IBOutlet weak var displayResult: UILabel!
     
     //array for holding the calculations.A calculation is a number and an operation (+,-,*,/). This scenario occurs when the user has entered a number and pressed an operation, sending, "1456" and "+" to the array, for example.
@@ -34,6 +34,7 @@ class ViewController: UIViewController {
         //displayResult.text = String(sum)
         theTotals += ["0"] //Set the total as 0, since no calculations have occured.
     }
+    
     
     //New references
     var currentNumber:Double = 0
@@ -61,10 +62,14 @@ class ViewController: UIViewController {
     @IBAction func buttons(_ sender: UIButton) {
         
         //If results does not equal "" or AC or =
-        if (displayResult.text != "" && sender.tag != 11 && sender.tag != 16){
+        if (displayResult.text != "" && sender.tag != 11 && sender.tag != 16 && sender.tag != 17){
             
-            //Store the current number
-            lastNumber = Double(displayResult.text!)!
+            //Error handling - only allow user to only press +,-,*,\ if display != already contain +,-,*,\
+            if (displayResult.text != "/" && displayResult.text != "-" && displayResult.text != "*" && displayResult.text != "+"){
+                //Store the last number
+                lastNumber = Double(displayResult.text!)!
+            }
+
             
             //Set the display to a sign
             if sender.tag == 12{ //Divide
@@ -80,6 +85,22 @@ class ViewController: UIViewController {
             operationTag = sender.tag //Store the operation (+,-,*,/) in the form of a tag number
             //We are now about to performCalculations as we just pressed a sign
             executingCal = true
+        }
+        else if (sender.tag == 17){ //If button pressed is +/-
+            print("17 pressed")
+            
+            //Error handling - only allow user to only press +,-,*,\ if display != already contain +,-,*,\
+            if (displayResult.text != "/" && displayResult.text != "-" && displayResult.text != "*" && displayResult.text != "+"){
+                //Convert
+                var tempNum = Double(displayResult.text!)!
+                if(tempNum >= 1){
+                    tempNum *= -1
+                    displayResult.text = String(tempNum)
+                }else if (tempNum <= -1){
+                    tempNum *= -1
+                    displayResult.text = String(tempNum)
+                }
+            }
         }
         else if (sender.tag == 16){ //If button pressed is =
             
@@ -104,7 +125,7 @@ class ViewController: UIViewController {
         }
     }
     
-    
+    //OLD CODE
     
     //Numerical characters
     @IBAction func selectDot(_ sender: Any) {
@@ -117,107 +138,107 @@ class ViewController: UIViewController {
             displayResult.text = cl
         }
     }
-    @IBAction func select0(_ sender: Any) {
-        if(acPressed == true){
-            acPressed = false
-            cl = "0"
-            displayResult.text = cl
-        }else{
-            cl += "0"
-            displayResult.text = cl
-        }
-    }
-    @IBAction func select1(_ sender: Any) {
-
-        if(acPressed == true){
-            acPressed = false
-            cl = "1"
-            displayResult.text = cl
-        }else{
-            cl += "1"
-            displayResult.text = cl
-        }
-    }
-    @IBAction func select2(_ sender: Any) {
-        if(acPressed == true){
-            acPressed = false
-            cl = "2"
-            displayResult.text = cl
-        }else{
-            cl += "2"
-            displayResult.text = cl
-        }
-    }
-    @IBAction func select3(_ sender: Any) {
-        if(acPressed == true){
-            acPressed = false
-            cl = "3"
-            displayResult.text = cl
-        }else{
-            cl += "3"
-            displayResult.text = cl
-        }
-    }
-    @IBAction func select4(_ sender: Any) {
-        if(acPressed == true){
-            acPressed = false
-            cl = "4"
-            displayResult.text = cl
-        }else{
-            cl += "4"
-            displayResult.text = cl
-        }
-    }
-    @IBAction func select5(_ sender: Any) {
-        if(acPressed == true){
-            acPressed = false
-            cl = "5"
-            displayResult.text = cl
-        }else{
-            cl += "5"
-            displayResult.text = cl
-        }
-    }
-    @IBAction func select6(_ sender: Any) {
-        if(acPressed == true){
-            acPressed = false
-            cl = "6"
-            displayResult.text = cl
-        }else{
-            cl += "6"
-            displayResult.text = cl
-        }
-    }
-    @IBAction func select7(_ sender: Any) {
-        if(acPressed == true){
-            acPressed = false
-            cl = "7"
-            displayResult.text = cl
-        }else{
-            cl += "7"
-            displayResult.text = cl
-        }
-    }
-    @IBAction func select8(_ sender: Any) {
-        if(acPressed == true){
-            acPressed = false
-            cl = "8"
-            displayResult.text = cl
-        }else{
-            cl += "8"
-            displayResult.text = cl
-        }
-    }
-    @IBAction func select9(_ sender: Any) {
-        if(acPressed == true){
-            acPressed = false
-            cl = "9"
-            displayResult.text = cl
-        }else{
-            cl += "9"
-            displayResult.text = cl
-        }
-    }
+//    @IBAction func select0(_ sender: Any) {
+//        if(acPressed == true){
+//            acPressed = false
+//            cl = "0"
+//            displayResult.text = cl
+//        }else{
+//            cl += "0"
+//            displayResult.text = cl
+//        }
+//    }
+//    @IBAction func select1(_ sender: Any) {
+//
+//        if(acPressed == true){
+//            acPressed = false
+//            cl = "1"
+//            displayResult.text = cl
+//        }else{
+//            cl += "1"
+//            displayResult.text = cl
+//        }
+//    }
+//    @IBAction func select2(_ sender: Any) {
+//        if(acPressed == true){
+//            acPressed = false
+//            cl = "2"
+//            displayResult.text = cl
+//        }else{
+//            cl += "2"
+//            displayResult.text = cl
+//        }
+//    }
+//    @IBAction func select3(_ sender: Any) {
+//        if(acPressed == true){
+//            acPressed = false
+//            cl = "3"
+//            displayResult.text = cl
+//        }else{
+//            cl += "3"
+//            displayResult.text = cl
+//        }
+//    }
+//    @IBAction func select4(_ sender: Any) {
+//        if(acPressed == true){
+//            acPressed = false
+//            cl = "4"
+//            displayResult.text = cl
+//        }else{
+//            cl += "4"
+//            displayResult.text = cl
+//        }
+//    }
+//    @IBAction func select5(_ sender: Any) {
+//        if(acPressed == true){
+//            acPressed = false
+//            cl = "5"
+//            displayResult.text = cl
+//        }else{
+//            cl += "5"
+//            displayResult.text = cl
+//        }
+//    }
+//    @IBAction func select6(_ sender: Any) {
+//        if(acPressed == true){
+//            acPressed = false
+//            cl = "6"
+//            displayResult.text = cl
+//        }else{
+//            cl += "6"
+//            displayResult.text = cl
+//        }
+//    }
+//    @IBAction func select7(_ sender: Any) {
+//        if(acPressed == true){
+//            acPressed = false
+//            cl = "7"
+//            displayResult.text = cl
+//        }else{
+//            cl += "7"
+//            displayResult.text = cl
+//        }
+//    }
+//    @IBAction func select8(_ sender: Any) {
+//        if(acPressed == true){
+//            acPressed = false
+//            cl = "8"
+//            displayResult.text = cl
+//        }else{
+//            cl += "8"
+//            displayResult.text = cl
+//        }
+//    }
+//    @IBAction func select9(_ sender: Any) {
+//        if(acPressed == true){
+//            acPressed = false
+//            cl = "9"
+//            displayResult.text = cl
+//        }else{
+//            cl += "9"
+//            displayResult.text = cl
+//        }
+//    }
     
     //Divide, multiply, minus and plus
     
