@@ -33,6 +33,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         //displayResult.text = String(sum)
         theTotals += ["0"] //Set the total as 0, since no calculations have occured.
+        displayResult.text = "0"
     }
     
     
@@ -41,10 +42,25 @@ class ViewController: UIViewController {
     var lastNumber:Double = 0
     var executingCal = false //See if user is performing a calculation
     var operationTag = 0 //Store what operation is going to be performed when user clicks on = in the form of a tag number
+    var equalPressed = false
 
     //Numbers
     @IBAction func selectNumbers(_ sender: UIButton) {
         
+
+        
+        //Reset to 0 if equal pressed and /,-,+,* not pressed
+//        if (equalPressed == true && displayResult.text != "/" && displayResult.text != "-" && displayResult.text != "*" && displayResult.text != "+" ){
+//            equalPressed = false
+//            displayResult.text = "0"
+//            //Display = the button pressed
+//            displayResult.text = displayResult.text! + String(sender.tag-1)
+//            currentNumber = Double(displayResult.text!)! //store the display as currentNumber
+//        }
+        //Used to start from a blank entry instead of 01
+        if(displayResult.text == "0"){
+            displayResult.text = ""
+        }
         if(displayResult.text == "Error - divide by 0\nResult reset to 0"){
             print("Error found")
             displayResult.text = ""
@@ -56,18 +72,21 @@ class ViewController: UIViewController {
             executingCal = false
         }
         else{
+
             //Display = the button pressed
             displayResult.text = displayResult.text! + String(sender.tag-1)
             currentNumber = Double(displayResult.text!)! //store the display as currentNumber
         }
+        
+        equalPressed = false
     }
     
-    //Other buttons - AC, +/-, %, /, x, -, +, =
+    //Other buttons - AC, +/-, %, /, x, -, +, =, CE, %
     
     @IBAction func buttons(_ sender: UIButton) {
         
-        //If results does not equal "" or AC or =
-        if (displayResult.text != "" && sender.tag != 11 && sender.tag != 16 && sender.tag != 17){//displayResult.text != "" &&
+        //If results does not equal "" or button is not AC or = or +/- or CE
+        if (displayResult.text != "" && sender.tag != 11 && sender.tag != 16 && sender.tag != 17 && sender.tag != 18){//displayResult.text != "" &&
             
 //            if(displayResult.text == "Error"){
 //
@@ -110,8 +129,35 @@ class ViewController: UIViewController {
                 }
             }
         }
+        else if (sender.tag == 18){ //If button pressed is CE
+            print("CE")
+            //Error handling - only allow user to press CE if display != already contain "" or divide by zero error message
+            var stringLength = displayResult.text!
+            //print(stringLength)
+            //print(stringLength.count)
+            //First character
+            var tempFirstString:String = displayResult.text!
+            var stringFirst = tempFirstString.prefix(1)//tempFirstString.startIndex
+            print("Start index:\(stringFirst)")
+            //If -3 remaining for example, reset to 0
+            if(stringLength.count == 2 && stringFirst == "-"){
+                    print("sucess")
+                displayResult.text = "0"
+            }
+            if(stringLength.count == 1){ // 5 remainig for example, reset to 0
+                displayResult.text = "0"
+            }
+            if (displayResult.text != "" && displayResult.text != "Error - divide by 0\nResult reset to 0" && displayResult.text != "0" && equalPressed != true){
+                var tempString:String = displayResult.text!
+                //tempString.remove(at: tempString.startIndex)
+                tempString.remove(at: tempString.index(before: tempString.endIndex))
+                displayResult.text = tempString
+                currentNumber = Double(displayResult.text!)! //Store the current numbers ADDED
+                //displayResult.text = displayResult.text!.remove(at: displayResult.text!.startIndex)
+            }
+        }
         else if (sender.tag == 16){ //If button pressed is =
-            
+            equalPressed = true
             if operationTag == 12{ //Divide
                 if (currentNumber == 0){ //Divide by zero
                     print(currentNumber)
@@ -123,26 +169,41 @@ class ViewController: UIViewController {
                 }
             }
             else if operationTag == 13{ //Multiply
-                displayResult.text = String(lastNumber * currentNumber)
+                if (lastNumber == 0 || currentNumber == 0){ //error handling 0 - 0
+                    print(lastNumber)
+                    print(currentNumber)
+                    displayResult.text = String(0)
+                }else{
+                    displayResult.text = String(lastNumber * currentNumber)
+                }
             }
             else if operationTag == 14{ //Subtract
                 if (lastNumber == 0 && currentNumber == 0){ //error handling 0 - 0
                     print(lastNumber)
                     print(currentNumber)
-                    displayResult.text = String(0.0)
+                    displayResult.text = String(0)
                 }else{
                     displayResult.text = String(lastNumber - currentNumber)
                 }
             }
             else if operationTag == 15{ //Addition
-                displayResult.text = String(lastNumber + currentNumber)
+                if (lastNumber == 0 && currentNumber == 0){ //error handling 0 + 0
+                    print(lastNumber)
+                    print(currentNumber)
+                    displayResult.text = String(0)
+                    //equalPressed = true
+                }else{
+                    displayResult.text = String(lastNumber + currentNumber)
+                    //equalPressed = true
+                }
             }
         }
         else if (sender.tag == 11){ //If button pressed is AC
-            displayResult.text = ""
+            displayResult.text = "0" //added 0
             lastNumber = 0
             currentNumber = 0
             operationTag = 0
+            equalPressed = false
         }
     }
     
