@@ -45,6 +45,11 @@ class ViewController: UIViewController {
     //Numbers
     @IBAction func selectNumbers(_ sender: UIButton) {
         
+        if(displayResult.text == "Error - divide by 0\nResult reset to 0"){
+            print("Error found")
+            displayResult.text = ""
+            print(displayResult.text!)
+        }
         if (executingCal == true){ //About to perform a calculation as a sign was just pressed
             displayResult.text = String(sender.tag-1) //Set the display to the next set of numbers for calculation
             currentNumber = Double(displayResult.text!)! //Store the current numbers
@@ -62,10 +67,13 @@ class ViewController: UIViewController {
     @IBAction func buttons(_ sender: UIButton) {
         
         //If results does not equal "" or AC or =
-        if (displayResult.text != "" && sender.tag != 11 && sender.tag != 16 && sender.tag != 17){
+        if (displayResult.text != "" && sender.tag != 11 && sender.tag != 16 && sender.tag != 17){//displayResult.text != "" &&
             
-            //Error handling - only allow user to only press +,-,*,\ if display != already contain +,-,*,\
-            if (displayResult.text != "/" && displayResult.text != "-" && displayResult.text != "*" && displayResult.text != "+"){
+//            if(displayResult.text == "Error"){
+//
+//            }
+            //Error handling - only allow user to only press +,-,*,\ if display != already contain +,-,*,\,Error
+            if (displayResult.text != "/" && displayResult.text != "-" && displayResult.text != "*" && displayResult.text != "+" && displayResult.text != "Error - divide by 0\nResult reset to 0"){
                 //Store the last number
                 lastNumber = Double(displayResult.text!)!
             }
@@ -90,7 +98,7 @@ class ViewController: UIViewController {
             print("17 pressed")
             
             //Error handling - only allow user to only press +,-,*,\ if display != already contain +,-,*,\
-            if (displayResult.text != "/" && displayResult.text != "-" && displayResult.text != "*" && displayResult.text != "+"){
+            if (displayResult.text != "/" && displayResult.text != "-" && displayResult.text != "*" && displayResult.text != "+" && displayResult.text != "Error - divide by 0\nResult reset to 0" && displayResult.text != ""){
                 //Convert
                 var tempNum = Double(displayResult.text!)!
                 if(tempNum >= 1){
@@ -105,13 +113,26 @@ class ViewController: UIViewController {
         else if (sender.tag == 16){ //If button pressed is =
             
             if operationTag == 12{ //Divide
-                displayResult.text = String(lastNumber / currentNumber)
+                if (currentNumber == 0){ //Divide by zero
+                    print(currentNumber)
+                    displayResult.text = "Error - divide by 0\nResult reset to 0"
+                    currentNumber = 0
+                    lastNumber = 0
+                }else{
+                    displayResult.text = String(lastNumber / currentNumber)
+                }
             }
             else if operationTag == 13{ //Multiply
                 displayResult.text = String(lastNumber * currentNumber)
             }
             else if operationTag == 14{ //Subtract
-                displayResult.text = String(lastNumber - currentNumber)
+                if (lastNumber == 0 && currentNumber == 0){ //error handling 0 - 0
+                    print(lastNumber)
+                    print(currentNumber)
+                    displayResult.text = String(0.0)
+                }else{
+                    displayResult.text = String(lastNumber - currentNumber)
+                }
             }
             else if operationTag == 15{ //Addition
                 displayResult.text = String(lastNumber + currentNumber)
