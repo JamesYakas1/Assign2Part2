@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     //References - OLD REFERENCES
     @IBOutlet weak var displayResult: UILabel!
     
+    @IBOutlet weak var subTotal: UILabel!
     //array for holding the calculations.A calculation is a number and an operation (+,-,*,/). This scenario occurs when the user has entered a number and pressed an operation, sending, "1456" and "+" to the array, for example.
     var theCals = [String]()
     
@@ -34,6 +35,7 @@ class ViewController: UIViewController {
         //displayResult.text = String(sum)
         theTotals += ["0"] //Set the total as 0, since no calculations have occured.
         displayResult.text = "0"
+        subTotal.text = ""
     }
     
     
@@ -189,6 +191,7 @@ class ViewController: UIViewController {
                     }else if (operationTag == 12){//Last operation = /
                         if(currentNumber == 0){ //Divide by zero.
                             displayResult.text = "Error - divide by 0\nResult reset to 0"
+                            subTotal.text = ""
                             operationTag = 0
                             theTotals.removeAll()
                             //theTotals += [displayResult.text!]
@@ -270,6 +273,7 @@ class ViewController: UIViewController {
                     }else if (operationTag == 12){//Last operation = /
                         if(currentNumber == 0){ //Divide by zero.
                             displayResult.text = "Error - divide by 0\nResult reset to 0"
+                            subTotal.text = ""
                             operationTag = 0
                             theTotals.removeAll()
                             //theTotals += [displayResult.text!]
@@ -351,6 +355,7 @@ class ViewController: UIViewController {
                     }else if (operationTag == 12){//Last operation = /
                         if(currentNumber == 0){ //Divide by zero.
                             displayResult.text = "Error - divide by 0\nResult reset to 0"
+                            subTotal.text = ""
                             operationTag = 0
                             theTotals.removeAll()
                             //theTotals += [displayResult.text!]
@@ -432,6 +437,7 @@ class ViewController: UIViewController {
                     }else if (operationTag == 12){//Last operation = /
                         if(currentNumber == 0){ //Divide by zero.
                             displayResult.text = "Error - divide by 0\nResult reset to 0"
+                            subTotal.text = ""
                             operationTag = 0
                             theTotals.removeAll()
                             //theTotals += [displayResult.text!]
@@ -468,10 +474,10 @@ class ViewController: UIViewController {
                 //displayResult.text = String(operationTag)
                 //We are now about to performCalculations as we just pressed a sign
                 //Subtotal
-//                if(displayResult.text != "Error - divide by 0\nResult reset to 0"){
-//                    displayResult.text = displayResult.text! + "\n(\(String(theTotals[0])))"
-//
-//                }
+                if(displayResult.text != "Error - divide by 0\nResult reset to 0"){
+                    subTotal.text = "(\(String(theTotals[0])))"
+                }
+//                subTotal.text = "(\(String(theTotals[0])))"
                 executingCal = true
             }//End of prevent double +,-,/,* doesn't change but displays correctly
         }
@@ -529,6 +535,7 @@ class ViewController: UIViewController {
                         print(currentNumber)
                         print("= with / 0")
                         displayResult.text = "Error - divide by 0\nResult reset to 0"
+                        subTotal.text = ""
                         currentNumber = 0
                         lastNumber = 0
                     }else{
@@ -613,6 +620,7 @@ class ViewController: UIViewController {
                 }
                 
             }//End statement about if = pressed when +,-,*,/ present
+            subTotal.text = ""
         }
         else if (sender.tag == 11){ //If button pressed is AC
             displayResult.text = "0" //added 0
