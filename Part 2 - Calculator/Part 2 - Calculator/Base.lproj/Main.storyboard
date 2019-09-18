@@ -30,6 +30,9 @@
                                                 <state key="normal" title="7">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                </variation>
                                                 <connections>
                                                     <action selector="selectNumbers:" destination="BYZ-38-t0r" eventType="touchUpInside" id="n1i-at-7l4"/>
                                                 </connections>
@@ -40,6 +43,9 @@
                                                 <state key="normal" title="8">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                </variation>
                                                 <connections>
                                                     <action selector="selectNumbers:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dh5-Hd-3Jy"/>
                                                 </connections>
@@ -50,6 +56,9 @@
                                                 <state key="normal" title="9">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                </variation>
                                                 <connections>
                                                     <action selector="selectNumbers:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dtx-TJ-79N"/>
                                                 </connections>
@@ -60,6 +69,9 @@
                                                 <state key="normal" title="/">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                </variation>
                                                 <connections>
                                                     <action selector="buttons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="42A-7E-num"/>
                                                 </connections>
@@ -83,6 +95,9 @@
                                                 <state key="normal" title="4">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                </variation>
                                                 <connections>
                                                     <action selector="selectNumbers:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Q4k-Ac-88A"/>
                                                 </connections>
@@ -93,6 +108,9 @@
                                                 <state key="normal" title="5">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                </variation>
                                                 <connections>
                                                     <action selector="selectNumbers:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pEP-7P-F2V"/>
                                                 </connections>
@@ -103,6 +121,9 @@
                                                 <state key="normal" title="6">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                </variation>
                                                 <connections>
                                                     <action selector="selectNumbers:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LBi-s5-4dK"/>
                                                 </connections>
@@ -113,6 +134,9 @@
                                                 <state key="normal" title="x">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                </variation>
                                                 <connections>
                                                     <action selector="buttons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sjv-g2-XwC"/>
                                                 </connections>
@@ -136,6 +160,9 @@
                                                 <state key="normal" title="1">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                </variation>
                                                 <connections>
                                                     <action selector="selectNumbers:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JIx-Jq-tBc"/>
                                                 </connections>
@@ -146,6 +173,9 @@
                                                 <state key="normal" title="2">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                </variation>
                                                 <connections>
                                                     <action selector="selectNumbers:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gJL-G4-46B"/>
                                                 </connections>
@@ -156,6 +186,9 @@
                                                 <state key="normal" title="3">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                </variation>
                                                 <connections>
                                                     <action selector="selectNumbers:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SfA-HW-yHs"/>
                                                 </connections>
@@ -166,6 +199,9 @@
                                                 <state key="normal" title="-">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                </variation>
                                                 <connections>
                                                     <action selector="buttons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="12F-1P-DCN"/>
                                                 </connections>
@@ -189,6 +225,9 @@
                                                 <state key="normal" title="0">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                                </variation>
                                                 <connections>
                                                     <action selector="selectNumbers:" destination="BYZ-38-t0r" eventType="touchUpInside" id="152-M1-euq"/>
                                                 </connections>
@@ -209,6 +248,9 @@
                                                 <state key="normal" title="CE">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                                </variation>
                                                 <connections>
                                                     <action selector="buttons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1zV-Li-Ljw"/>
                                                 </connections>
@@ -219,6 +261,9 @@
                                                 <state key="normal" title="+">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                                </variation>
                                                 <connections>
                                                     <action selector="buttons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O5Y-wM-AHO"/>
                                                 </connections>
@@ -250,6 +295,9 @@
                                         <state key="normal" title="AC">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        </variation>
                                         <connections>
                                             <action selector="buttons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nHS-4g-qgv"/>
                                         </connections>
@@ -266,6 +314,9 @@
                                         <state key="normal" title="+/-">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        </variation>
                                         <connections>
                                             <action selector="buttons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Hm-gw-DLK"/>
                                         </connections>
@@ -282,6 +333,9 @@
                                         <state key="normal" title="%">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        </variation>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -309,12 +363,24 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtotal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgI-oe-Xl9">
-                                <rect key="frame" x="128" y="70" width="64.5" height="20.5"/>
+                                <rect key="frame" x="126" y="75.5" width="68" height="21.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -329,8 +395,9 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pgI-oe-Xl9" secondAttribute="trailing" symbolic="YES" id="TaI-dh-Jnf"/>
                             <constraint firstItem="Qjm-aq-4ko" firstAttribute="top" secondItem="Xjk-ZY-O1d" secondAttribute="bottom" id="Tpl-2Q-iQE"/>
                             <constraint firstItem="pgI-oe-Xl9" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-160" id="WMn-eP-vvm">
-                                <variation key="heightClass=compact-widthClass=compact" constant="-115"/>
+                                <variation key="heightClass=compact-widthClass=compact" constant="-112"/>
                                 <variation key="heightClass=compact-widthClass=regular" constant="-135"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="-154"/>
                                 <variation key="heightClass=regular-widthClass=regular" constant="-270"/>
                             </constraint>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Qjm-aq-4ko" secondAttribute="trailing" id="cHX-YE-yd4"/>
