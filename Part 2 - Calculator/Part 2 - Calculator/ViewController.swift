@@ -49,7 +49,8 @@ class ViewController: UIViewController {
         
         
         //If number pressed after = pressed, then reset theTotal to 0 and reset the operationTag.
-        if(equalPressed){
+        if(equalPressed && displayResult.text != "+" && displayResult.text != "-" && displayResult.text != "*"
+            && displayResult.text != "/"){
             operationTag = 0
             theTotals.removeAll()
             //theTotals += [displayResult.text!]
@@ -251,7 +252,6 @@ class ViewController: UIViewController {
                         displayResult.text = "*"
                         print(theTotals[0])
                     }else if (operationTag == 13){//Last operation = *
-                        if (displayResult.text != "/" && displayResult.text != "-" && displayResult.text != "*" && displayResult.text != "+" && displayResult.text != "Error - divide by 0\nResult reset to 0"){
                             //Store temp total
                             var tempTotal:Double = Double(theTotals[0])!
                             
@@ -267,8 +267,6 @@ class ViewController: UIViewController {
                             //Display sign
                             displayResult.text = "*"
                             print(theTotals[0])
-                            
-                        }
                     }else if (operationTag == 12){//Last operation = /
                         if(currentNumber == 0){ //Divide by zero.
                             displayResult.text = "Error - divide by 0\nResult reset to 0"
@@ -469,7 +467,11 @@ class ViewController: UIViewController {
                 operationTag = sender.tag //Store the operation (+,-,*,/) in the form of a tag number
                 //displayResult.text = String(operationTag)
                 //We are now about to performCalculations as we just pressed a sign
-                
+                //Subtotal
+//                if(displayResult.text != "Error - divide by 0\nResult reset to 0"){
+//                    displayResult.text = displayResult.text! + "\n(\(String(theTotals[0])))"
+//
+//                }
                 executingCal = true
             }//End of prevent double +,-,/,* doesn't change but displays correctly
         }
