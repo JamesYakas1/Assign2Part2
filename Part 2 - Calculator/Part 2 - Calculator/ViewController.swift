@@ -47,9 +47,10 @@ class ViewController: UIViewController {
     //Numbers
     @IBAction func selectNumbers(_ sender: UIButton) {
         
+        
         //If number pressed after = pressed, then reset theTotal to 0 and reset the operationTag.
         if(equalPressed){
-            //operationTag = 0
+            operationTag = 0
             theTotals.removeAll()
             //theTotals += [displayResult.text!]
             theTotals += ["0"]
@@ -57,13 +58,13 @@ class ViewController: UIViewController {
         }
         
         //Reset to 0 if equal pressed and /,-,+,* not pressed
-//        if (equalPressed == true && displayResult.text != "/" && displayResult.text != "-" && displayResult.text != "*" && displayResult.text != "+" ){
-//            equalPressed = false
-//            displayResult.text = "0"
-//            //Display = the button pressed
-//            displayResult.text = displayResult.text! + String(sender.tag-1)
-//            currentNumber = Double(displayResult.text!)! //store the display as currentNumber
-//        }
+        //        if (equalPressed == true && displayResult.text != "/" && displayResult.text != "-" && displayResult.text != "*" && displayResult.text != "+" ){
+        //            equalPressed = false
+        //            displayResult.text = "0"
+        //            //Display = the button pressed
+        //            displayResult.text = displayResult.text! + String(sender.tag-1)
+        //            currentNumber = Double(displayResult.text!)! //store the display as currentNumber
+        //        }
         //Used to start from a blank entry instead of 01
         if(displayResult.text == "0"){
             displayResult.text = ""
@@ -111,30 +112,366 @@ class ViewController: UIViewController {
         //If results does not equal "" or button is not AC or = or +/- or CE
         if (displayResult.text != "" && sender.tag != 11 && sender.tag != 16 && sender.tag != 17 && sender.tag != 18){//displayResult.text != "" &&
             
-//            if(displayResult.text == "Error"){
-//
-//            }
+            //            if(displayResult.text == "Error"){
+            //
+            //            }
             //Error handling - only allow user to only press +,-,*,\ if display != already contain +,-,*,\,Error
             if (displayResult.text != "/" && displayResult.text != "-" && displayResult.text != "*" && displayResult.text != "+" && displayResult.text != "Error - divide by 0\nResult reset to 0"){
                 //Store the last number
                 lastNumber = Double(displayResult.text!)!
             }
-
             
-            //Set the display to a sign
-            if sender.tag == 12{ //Divide
-                displayResult.text = "/"
-            }else if sender.tag == 13{ //Multiply
-                displayResult.text = "*"
-            }else if sender.tag == 14{ //Subtract
-                displayResult.text = "-"
-            }else if sender.tag == 15{ //Addition
-                displayResult.text = "+"
+            //If number pressed after = pressed, then reset theTotal to 0.
+            if(equalPressed){
+                operationTag = 0
+                theTotals.removeAll()
+                //theTotals += [displayResult.text!]
+                theTotals += [displayResult.text!]
+                print("After equl pressed" + theTotals[0])
+                equalPressed = false
             }
             
-            operationTag = sender.tag //Store the operation (+,-,*,/) in the form of a tag number
-            //We are now about to performCalculations as we just pressed a sign
-            executingCal = true
+            if (displayResult.text != "/" && displayResult.text != "-" && displayResult.text != "*" && displayResult.text != "+" && displayResult.text != "Error - divide by 0\nResult reset to 0"){
+                
+                
+                //Set the display to a sign
+                if sender.tag == 12{ //Divide
+                    //Addition
+                    if (operationTag == 15){//Last operation = +
+                        //Store temp total
+                        var tempTotal:Double = Double(theTotals[0])!
+                        
+                        //Reset the total
+                        theTotals.removeAll()
+                        
+                        //Do calculation
+                        tempTotal += Double(displayResult.text!)!
+                        
+                        //Append back to total
+                        theTotals.append(String(tempTotal))
+                        
+                        //Display sign
+                        displayResult.text = "/"
+                        print(theTotals[0])
+                    }else if (operationTag == 14){//Last operation = -
+                        //Store temp total
+                        var tempTotal:Double = Double(theTotals[0])!
+                        
+                        //Reset the total
+                        theTotals.removeAll()
+                        
+                        //Do calculation
+                        tempTotal -= Double(displayResult.text!)!
+                        
+                        //Append back to total
+                        theTotals.append(String(tempTotal))
+                        
+                        //Display sign
+                        displayResult.text = "/"
+                        print(theTotals[0])
+                    }else if (operationTag == 13){//Last operation = *
+                        //Store temp total
+                        var tempTotal:Double = Double(theTotals[0])!
+                        
+                        //Reset the total
+                        theTotals.removeAll()
+                        
+                        //Do calculation
+                        tempTotal *= Double(displayResult.text!)!
+                        
+                        //Append back to total
+                        theTotals.append(String(tempTotal))
+                        
+                        //Display sign
+                        displayResult.text = "/"
+                        print(theTotals[0])
+                    }else if (operationTag == 12){//Last operation = /
+                        if(currentNumber == 0){ //Divide by zero.
+                            displayResult.text = "Error - divide by 0\nResult reset to 0"
+                            operationTag = 0
+                            theTotals.removeAll()
+                            //theTotals += [displayResult.text!]
+                            theTotals += ["0"]
+                        }else{
+                            //Store temp total
+                            var tempTotal:Double = Double(theTotals[0])!
+                            
+                            //Reset the total
+                            theTotals.removeAll()
+                            
+                            //Do calculation
+                            tempTotal /= Double(displayResult.text!)!
+                            
+                            //Append back to total
+                            theTotals.append(String(tempTotal))
+                            
+                            //Display sign
+                            displayResult.text = "/"
+                            print(theTotals[0])
+                        }
+                    }
+                    else  {
+                        theTotals.removeAll()
+                        theTotals += [displayResult.text!]
+                        displayResult.text = "/" //Display sign
+                        print(theTotals[0])
+                    }
+                }else if sender.tag == 13{ //Multiply
+                    //Addition
+                    if (operationTag == 15){//Last operation = +
+                        //Store temp total
+                        var tempTotal:Double = Double(theTotals[0])!
+                        
+                        //Reset the total
+                        theTotals.removeAll()
+                        
+                        //Do calculation
+                        tempTotal += Double(displayResult.text!)!
+                        
+                        //Append back to total
+                        theTotals.append(String(tempTotal))
+                        
+                        //Display sign
+                        displayResult.text = "*"
+                        print(theTotals[0])
+                    }else if (operationTag == 14){//Last operation = -
+                        //Store temp total
+                        var tempTotal:Double = Double(theTotals[0])!
+                        
+                        //Reset the total
+                        theTotals.removeAll()
+                        
+                        //Do calculation
+                        tempTotal -= Double(displayResult.text!)!
+                        
+                        //Append back to total
+                        theTotals.append(String(tempTotal))
+                        
+                        //Display sign
+                        displayResult.text = "*"
+                        print(theTotals[0])
+                    }else if (operationTag == 13){//Last operation = *
+                        if (displayResult.text != "/" && displayResult.text != "-" && displayResult.text != "*" && displayResult.text != "+" && displayResult.text != "Error - divide by 0\nResult reset to 0"){
+                            //Store temp total
+                            var tempTotal:Double = Double(theTotals[0])!
+                            
+                            //Reset the total
+                            theTotals.removeAll()
+                            
+                            //Do calculation
+                            tempTotal *= Double(displayResult.text!)!
+                            
+                            //Append back to total
+                            theTotals.append(String(tempTotal))
+                            
+                            //Display sign
+                            displayResult.text = "*"
+                            print(theTotals[0])
+                            
+                        }
+                    }else if (operationTag == 12){//Last operation = /
+                        if(currentNumber == 0){ //Divide by zero.
+                            displayResult.text = "Error - divide by 0\nResult reset to 0"
+                            operationTag = 0
+                            theTotals.removeAll()
+                            //theTotals += [displayResult.text!]
+                            theTotals += ["0"]
+                        }else{
+                            //Store temp total
+                            var tempTotal:Double = Double(theTotals[0])!
+                            
+                            //Reset the total
+                            theTotals.removeAll()
+                            
+                            //Do calculation
+                            tempTotal /= Double(displayResult.text!)!
+                            
+                            //Append back to total
+                            theTotals.append(String(tempTotal))
+                            
+                            //Display sign
+                            displayResult.text = "*"
+                            print(theTotals[0])
+                        }
+                    }
+                    else  {
+                        theTotals.removeAll()
+                        theTotals += [displayResult.text!]
+                        displayResult.text = "*" //Display sign
+                        print(theTotals[0])
+                    }
+                }else if sender.tag == 14{ //Subtract
+                    //Addition
+                    if (operationTag == 15){//Last operation = +
+                        //Store temp total
+                        var tempTotal:Double = Double(theTotals[0])!
+                        
+                        //Reset the total
+                        theTotals.removeAll()
+                        
+                        //Do calculation
+                        tempTotal += Double(displayResult.text!)!
+                        
+                        //Append back to total
+                        theTotals.append(String(tempTotal))
+                        
+                        //Display sign
+                        displayResult.text = "-"
+                        print(theTotals[0])
+                    }else if (operationTag == 14){//Last operation = -
+                        //Store temp total
+                        var tempTotal:Double = Double(theTotals[0])!
+                        
+                        //Reset the total
+                        theTotals.removeAll()
+                        
+                        //Do calculation
+                        tempTotal -= Double(displayResult.text!)!
+                        
+                        //Append back to total
+                        theTotals.append(String(tempTotal))
+                        
+                        //Display sign
+                        displayResult.text = "-"
+                        print(theTotals[0])
+                    }else if (operationTag == 13){//Last operation = *
+                        //Store temp total
+                        var tempTotal:Double = Double(theTotals[0])!
+                        
+                        //Reset the total
+                        theTotals.removeAll()
+                        
+                        //Do calculation
+                        tempTotal *= Double(displayResult.text!)!
+                        
+                        //Append back to total
+                        theTotals.append(String(tempTotal))
+                        
+                        //Display sign
+                        displayResult.text = "-"
+                        print(theTotals[0])
+                    }else if (operationTag == 12){//Last operation = /
+                        if(currentNumber == 0){ //Divide by zero.
+                            displayResult.text = "Error - divide by 0\nResult reset to 0"
+                            operationTag = 0
+                            theTotals.removeAll()
+                            //theTotals += [displayResult.text!]
+                            theTotals += ["0"]
+                        }else{
+                            //Store temp total
+                            var tempTotal:Double = Double(theTotals[0])!
+                            
+                            //Reset the total
+                            theTotals.removeAll()
+                            
+                            //Do calculation
+                            tempTotal /= Double(displayResult.text!)!
+                            
+                            //Append back to total
+                            theTotals.append(String(tempTotal))
+                            
+                            //Display sign
+                            displayResult.text = "-"
+                            print(theTotals[0])
+                        }
+                    }
+                    else  {
+                        theTotals.removeAll()
+                        theTotals += [displayResult.text!]
+                        displayResult.text = "-" //Display sign
+                        print(theTotals[0])
+                    }
+                }else if sender.tag == 15{ //Addition
+                    //Addition
+                    if (operationTag == 15){//Last operation = +
+                        //Store temp total
+                        var tempTotal:Double = Double(theTotals[0])!
+                        
+                        //Reset the total
+                        theTotals.removeAll()
+                        
+                        //Do calculation
+                        tempTotal += Double(displayResult.text!)!
+                        
+                        //Append back to total
+                        theTotals.append(String(tempTotal))
+                        
+                        //Display sign
+                        displayResult.text = "+"
+                        print(theTotals[0])
+                    }else if (operationTag == 14){//Last operation = -
+                        //Store temp total
+                        var tempTotal:Double = Double(theTotals[0])!
+                        
+                        //Reset the total
+                        theTotals.removeAll()
+                        
+                        //Do calculation
+                        tempTotal -= Double(displayResult.text!)!
+                        
+                        //Append back to total
+                        theTotals.append(String(tempTotal))
+                        
+                        //Display sign
+                        displayResult.text = "+"
+                        print(theTotals[0])
+                    }else if (operationTag == 13){//Last operation = *
+                        //Store temp total
+                        var tempTotal:Double = Double(theTotals[0])!
+                        
+                        //Reset the total
+                        theTotals.removeAll()
+                        
+                        //Do calculation
+                        tempTotal *= Double(displayResult.text!)!
+                        
+                        //Append back to total
+                        theTotals.append(String(tempTotal))
+                        
+                        //Display sign
+                        displayResult.text = "+"
+                        print(theTotals[0])
+                    }else if (operationTag == 12){//Last operation = /
+                        if(currentNumber == 0){ //Divide by zero.
+                            displayResult.text = "Error - divide by 0\nResult reset to 0"
+                            operationTag = 0
+                            theTotals.removeAll()
+                            //theTotals += [displayResult.text!]
+                            theTotals += ["0"]
+                        }else{
+                            //Store temp total
+                            var tempTotal:Double = Double(theTotals[0])!
+                            
+                            //Reset the total
+                            theTotals.removeAll()
+                            
+                            //Do calculation
+                            tempTotal /= Double(displayResult.text!)!
+                            
+                            //Append back to total
+                            theTotals.append(String(tempTotal))
+                            
+                            //Display sign
+                            displayResult.text = "+"
+                            print(theTotals[0])
+                        }
+                    }
+                    else  {
+                        theTotals.removeAll()
+                        theTotals += [displayResult.text!]
+                        displayResult.text = "+" //Display sign
+                        print(theTotals[0])
+                    }
+                    
+                    //End of prevent double +,-,/,* //Changes but doesnt display correctly
+                }
+                
+                operationTag = sender.tag //Store the operation (+,-,*,/) in the form of a tag number
+                //displayResult.text = String(operationTag)
+                //We are now about to performCalculations as we just pressed a sign
+                
+                executingCal = true
+            }//End of prevent double +,-,/,* doesn't change but displays correctly
         }
         else if (sender.tag == 17){ //If button pressed is +/-
             print("17 pressed")
@@ -165,7 +502,7 @@ class ViewController: UIViewController {
             print("Start index:\(stringFirst)")
             //If -3 remaining for example, reset to 0
             if(stringLength.count == 2 && stringFirst == "-"){
-                    print("sucess")
+                print("sucess")
                 displayResult.text = "0"
             }
             if(stringLength.count == 1){ // 5 remainig for example, reset to 0
@@ -182,45 +519,98 @@ class ViewController: UIViewController {
         }
         else if (sender.tag == 16){ //If button pressed is =
             equalPressed = true
-            if operationTag == 12{ //Divide
-                if (currentNumber == 0){ //Divide by zero
-                    print(currentNumber)
-                    displayResult.text = "Error - divide by 0\nResult reset to 0"
-                    currentNumber = 0
-                    lastNumber = 0
-                }else{
-                    displayResult.text = String(lastNumber / currentNumber)
+            if(displayResult.text != "+" && displayResult.text != "-" &&
+                displayResult.text != "/" &&
+                displayResult.text != "*"){
+                if operationTag == 12{ //Divide
+                    if (currentNumber == 0){ //Divide by zero
+                        print(currentNumber)
+                        print("= with / 0")
+                        displayResult.text = "Error - divide by 0\nResult reset to 0"
+                        currentNumber = 0
+                        lastNumber = 0
+                    }else{
+                        //displayResult.text = String(lastNumber / currentNumber)
+                        var tempTotal:Double = Double(theTotals[0])!
+                        
+                        //Reset the total
+                        theTotals.removeAll()
+                        
+                        //Do calculation
+                        tempTotal /= Double(displayResult.text!)!
+                        
+                        //Append back to total
+                        theTotals.append(String(tempTotal))
+                    }
                 }
-            }
-            else if operationTag == 13{ //Multiply
-                if (lastNumber == 0 || currentNumber == 0){ //error handling 0 - 0
-                    print(lastNumber)
-                    print(currentNumber)
-                    displayResult.text = String(0)
-                }else{
-                    displayResult.text = String(lastNumber * currentNumber)
+                else if operationTag == 13{ //Multiply
+                    if (lastNumber == 0 || currentNumber == 0){ //error handling 0 - 0
+                        print(lastNumber)
+                        print(currentNumber)
+                        //displayResult.text = String(0)
+                    }else{
+                        //displayResult.text = String(lastNumber * currentNumber)
+                        var tempTotal:Double = Double(theTotals[0])!
+                        
+                        //Reset the total
+                        theTotals.removeAll()
+                        
+                        //Do calculation
+                        tempTotal *= Double(displayResult.text!)!
+                        
+                        //Append back to total
+                        theTotals.append(String(tempTotal))
+                    }
                 }
-            }
-            else if operationTag == 14{ //Subtract
-                if (lastNumber == 0 && currentNumber == 0){ //error handling 0 - 0
-                    print(lastNumber)
-                    print(currentNumber)
-                    displayResult.text = String(0)
-                }else{
-                    displayResult.text = String(lastNumber - currentNumber)
+                else if operationTag == 14{ //Subtract
+                    if (lastNumber == 0 && currentNumber == 0){ //error handling 0 - 0
+                        print(lastNumber)
+                        print(currentNumber)
+                        displayResult.text = String(0)
+                    }else{
+                        //displayResult.text = String(lastNumber - currentNumber)
+                        var tempTotal:Double = Double(theTotals[0])!
+                        
+                        //Reset the total
+                        theTotals.removeAll()
+                        
+                        //Do calculation
+                        tempTotal -= Double(displayResult.text!)!
+                        
+                        //Append back to total
+                        theTotals.append(String(tempTotal))
+                    }
                 }
-            }
-            else if operationTag == 15{ //Addition
-                if (lastNumber == 0 && currentNumber == 0){ //error handling 0 + 0
-                    print(lastNumber)
-                    print(currentNumber)
-                    displayResult.text = String(0)
-                    //equalPressed = true
-                }else{
-                    displayResult.text = String(lastNumber + currentNumber)
-                    //equalPressed = true
+                else if operationTag == 15{ //Addition
+                    if (lastNumber == 0 && currentNumber == 0){ //error handling 0 + 0
+                        print(lastNumber)
+                        print(currentNumber)
+                        displayResult.text = String(0)
+                        //equalPressed = true
+                    }else{
+                        //displayResult.text = String(lastNumber + currentNumber)
+                        var tempTotal:Double = Double(theTotals[0])!
+                        
+                        //Reset the total
+                        theTotals.removeAll()
+                        
+                        //Do calculation
+                        tempTotal += Double(displayResult.text!)!
+                        
+                        //Append back to total
+                        theTotals.append(String(tempTotal))
+                    }
                 }
-            }
+                //Display final result
+                if(displayResult.text == "Error - divide by 0\nResult reset to 0"){
+                    operationTag = 0
+                    theTotals.removeAll()
+                    theTotals += ["0"]
+                }else{
+                    displayResult.text = String(theTotals[0])
+                }
+                
+            }//End statement about if = pressed when +,-,*,/ present
         }
         else if (sender.tag == 11){ //If button pressed is AC
             displayResult.text = "0" //added 0
@@ -228,6 +618,9 @@ class ViewController: UIViewController {
             currentNumber = 0
             operationTag = 0
             equalPressed = false
+            
+            theTotals.removeAll()
+            theTotals += ["0"]
         }
     }
     
