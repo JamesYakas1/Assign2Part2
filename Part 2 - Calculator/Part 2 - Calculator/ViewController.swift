@@ -47,7 +47,14 @@ class ViewController: UIViewController {
     //Numbers
     @IBAction func selectNumbers(_ sender: UIButton) {
         
-
+        //If number pressed after = pressed, then reset theTotal to 0 and reset the operationTag.
+        if(equalPressed){
+            //operationTag = 0
+            theTotals.removeAll()
+            //theTotals += [displayResult.text!]
+            theTotals += ["0"]
+            
+        }
         
         //Reset to 0 if equal pressed and /,-,+,* not pressed
 //        if (equalPressed == true && displayResult.text != "/" && displayResult.text != "-" && displayResult.text != "*" && displayResult.text != "+" ){
@@ -67,14 +74,30 @@ class ViewController: UIViewController {
             print(displayResult.text!)
         }
         if (executingCal == true){ //About to perform a calculation as a sign was just pressed
-            displayResult.text = String(sender.tag-1) //Set the display to the next set of numbers for calculation
+            if(sender.tag == 19){//If . pressed
+                displayResult.text =  "0."
+            }else{
+                displayResult.text = String(sender.tag-1)
+            }
+            //Set the display to the next set of numbers for calculation
             currentNumber = Double(displayResult.text!)! //Store the current numbers
             executingCal = false
         }
         else{
-
-            //Display = the button pressed
-            displayResult.text = displayResult.text! + String(sender.tag-1)
+            //if = pressed
+            if (equalPressed == true){
+                displayResult.text = ""
+            }
+            if(sender.tag == 19 && !(displayResult.text?.contains("."))!){ //If . presssed && not already contain a "."
+                if (displayResult.text == ""){//If null
+                    displayResult.text = displayResult.text! + "0."
+                }else{//If not null
+                    displayResult.text = displayResult.text! + "."
+                }
+            }else if (sender.tag != 19){ //If not . pressed
+                //Display = the button pressed
+                displayResult.text = displayResult.text! + String(sender.tag-1)
+            }
             currentNumber = Double(displayResult.text!)! //store the display as currentNumber
         }
         
@@ -127,6 +150,7 @@ class ViewController: UIViewController {
                     tempNum *= -1
                     displayResult.text = String(tempNum)
                 }
+                currentNumber = Double(displayResult.text!)! //store the display as currentNumber
             }
         }
         else if (sender.tag == 18){ //If button pressed is CE
