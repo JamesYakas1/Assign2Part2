@@ -501,12 +501,12 @@ class ViewController: UIViewController {
         else if (sender.tag == 18){ //If button pressed is CE
             print("CE")
             //Error handling - only allow user to press CE if display != already contain "" or divide by zero error message
-            var stringLength = displayResult.text!
+            let stringLength = displayResult.text!
             //print(stringLength)
             //print(stringLength.count)
             //First character
-            var tempFirstString:String = displayResult.text!
-            var stringFirst = tempFirstString.prefix(1)//tempFirstString.startIndex
+            let tempFirstString:String = displayResult.text!
+            let stringFirst = tempFirstString.prefix(1)//tempFirstString.startIndex
             print("Start index:\(stringFirst)")
             //If -3 remaining for example, reset to 0
             if(stringLength.count == 2 && stringFirst == "-"){
