@@ -193,12 +193,15 @@
                                                     <action selector="selectNumbers:" destination="BYZ-38-t0r" eventType="touchUpInside" id="152-M1-euq"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y7F-jw-a5A">
+                                            <button opaque="NO" tag="19" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y7F-jw-a5A">
                                                 <rect key="frame" x="103.5" y="0.0" width="103.5" height="60"/>
                                                 <color key="backgroundColor" red="0.1137254902" green="0.1647058824" blue="0.2274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title=".">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="selectNumbers:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lot-a9-Qss"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" tag="18" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cWh-Dl-YNV">
                                                 <rect key="frame" x="207" y="0.0" width="103.5" height="60"/>
