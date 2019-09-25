@@ -620,7 +620,13 @@ class ViewController: UIViewController {
                 }
                 
             }//End statement about if = pressed when +,-,*,/ present
+            //Clear subtotal from the screen
             subTotal.text = ""
+            //If not divide by zero display the total, else display the message by default
+            if(displayResult.text != "Error - divide by 0\nResult reset to 0"){
+                displayResult.text = theTotals[0]
+            }
+    
         }
         else if (sender.tag == 11){ //If button pressed is AC
             displayResult.text = "0" //added 0
@@ -631,6 +637,8 @@ class ViewController: UIViewController {
             
             theTotals.removeAll()
             theTotals += ["0"]
+            
+            subTotal.text = ""
         }
     }
     
