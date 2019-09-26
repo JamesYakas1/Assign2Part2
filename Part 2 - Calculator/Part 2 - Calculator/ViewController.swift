@@ -478,10 +478,10 @@ class ViewController: UIViewController {
             if (displayResult.text != "/" && displayResult.text != "-" && displayResult.text != "*" && displayResult.text != "+" && displayResult.text != "Error - divide by 0\nResult reset to 0" && displayResult.text != ""){
                 //Convert
                 var tempNum = Double(displayResult.text!)!
-                if(tempNum >= 1){
+                if(tempNum > 0){
                     tempNum *= -1
                     displayResult.text = String(tempNum)
-                }else if (tempNum <= -1){
+                }else if (tempNum < 0){
                     tempNum *= -1
                     displayResult.text = String(tempNum)
                 }
